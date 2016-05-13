@@ -111,16 +111,7 @@ module Sensis
 
     res = ResponseData.new(result) if result
 
-    # ensure successful status code
-    case result["code"]
-      when 200 # success
-        return res
-      when 206 # spell-checker was run
-        puts "Note: #{result["message"]}"
-        return res
-      else
-        raise "API returned error: #{res.message}, code: #{result.code}"
-    end
+    res
   end
 
   def Sensis.endpoint(endpoint_type, options)
